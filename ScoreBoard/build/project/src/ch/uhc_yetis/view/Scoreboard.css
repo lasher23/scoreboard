@@ -1,0 +1,14 @@
+.Score{
+	-fx-font-family:'DSEG14 Modern-Regular';
+	-fx-font-size: 150px;
+}
+
+.Third{
+	-fx-font-family: 'DSEG14 Modern-Regular';
+	-fx-font-size: 220px;
+}
+
+.Time{
+	-fx-font-family:'DSEG14 Modern-Regular';
+	-fx-font-size: 130px;
+}
