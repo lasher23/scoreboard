@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ScoreboardController extends Stage {
   public enum TimeState {
@@ -34,10 +35,10 @@ public class ScoreboardController extends Stage {
   private Timer timer;
   private boolean timerCountUp = true;
   private TimeState timeState = TimeState.FISRHALF;
-  private boolean gameIsFinished = false;
   private boolean gameIsStarted = false;
 
   public ScoreboardController() {
+    super(StageStyle.UNDECORATED);
     try {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("Scoreboard.fxml"));
@@ -112,14 +113,15 @@ public class ScoreboardController extends Stage {
           actualTime = 300000;
           timerCountUp = false;
           timeState = TimeState.PAUSE;
+          stopTime();
           return;
         } else if (actualTime == 0 && timeState == TimeState.PAUSE) {
           actualTime = 1200000;
           timeState = TimeState.SECONDHALF;
+          stopTime();
           return;
         } else if (actualTime == 0 && timeState == TimeState.SECONDHALF) {
           timer.cancel();
-          gameIsFinished = true;
           fireGameEndListeners();
           return;
         }

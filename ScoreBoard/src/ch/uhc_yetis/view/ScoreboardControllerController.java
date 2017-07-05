@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -20,7 +20,7 @@ public class ScoreboardControllerController extends Stage {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("ScoreboardController.fxml"));
       loader.setController(this);
-      HBox box = (HBox) loader.load();
+      VBox box = (VBox) loader.load();
       setScene(new Scene(box));
     } catch (Exception e) {
       e.printStackTrace();

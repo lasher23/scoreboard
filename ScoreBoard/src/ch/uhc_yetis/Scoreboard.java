@@ -3,7 +3,9 @@ package ch.uhc_yetis;
 import ch.uhc_yetis.view.ScoreboardController;
 import ch.uhc_yetis.view.ScoreboardControllerController;
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class Scoreboard extends Application {
@@ -14,15 +16,29 @@ public class Scoreboard extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
+
     Font.loadFont(getClass().getResourceAsStream("view/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 250);
     Font.loadFont(getClass().getResourceAsStream("view/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 150);
     ScoreboardController sc = new ScoreboardController();
-    sc.setMaximized(true);
-    sc.show();
     ScoreboardControllerController scc = new ScoreboardControllerController(sc);
-    scc.setMaximized(true);
-    scc.show();
     sc.setOnCloseRequest(event -> scc.close());
     scc.setOnCloseRequest(event -> sc.close());
+    sc.show();
+    scc.show();
+
+    Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+    scc.setX(visualBounds.getMinX());
+    scc.setY(visualBounds.getMinY());
+
+    for (Screen screen : Screen.getScreens()) {
+      if (!screen.equals(Screen.getPrimary())) {
+        sc.setX(screen.getVisualBounds().getMinX());
+        sc.setY(screen.getVisualBounds().getMinY());
+      }
+    }
+
+    sc.setMaximized(true);
+    scc.setMaximized(true);
+
   }
 }
