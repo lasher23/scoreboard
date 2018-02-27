@@ -27,3 +27,16 @@ dependencies {
     // 'test.useTestNG()' to your build script.
 }
 
+jar{
+	manifest {
+        attributes 'Main-Class': 'ch.uhc_yetis.Scoreboard'
+    }
+    from('src/main/java'){
+		include '**/*.fxml'
+		include '**/*.css'
+		include '**/*.java'
+		include '**/*.ttf'
+		include '**/*.woff'
+		include '**/*.woff2'
+	}
+}
