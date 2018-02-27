@@ -22,7 +22,7 @@
 	
 		<mkdir dir="project" />
 		<copy todir="project">
-			<fileset dir="D:\workspace\ScoreBoard">
+			<fileset dir="C:\Users\bbzw\workspace\scoreboard\ScoreBoard">
 				<include name="src/**" />
 			</fileset>
 		</copy>
