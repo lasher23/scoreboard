@@ -14,8 +14,8 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="293.0" minHeight="10.0" prefHeight="263.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="263.0" minHeight="10.0" prefHeight="262.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="293.0" minHeight="10.0" percentHeight="70" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="263.0" minHeight="10.0" percentHeight="30" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
