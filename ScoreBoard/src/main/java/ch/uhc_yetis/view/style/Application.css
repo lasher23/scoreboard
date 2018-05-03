@@ -1,12 +1,12 @@
 .Score{
 	-fx-font-family:'DSEG14 Modern-Regular';
-	-fx-font-size: 350px;
+	-fx-font-size: 200px;
 	-fx-text-fill: #c62828;
 }
 
 .Third{
 	-fx-font-family: 'DSEG14 Modern-Regular';
-	-fx-font-size: 400px;
+	-fx-font-size: 300px;
 	-fx-text-fill: #c62828;
 	
 }

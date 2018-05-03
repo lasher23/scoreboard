@@ -1,6 +1,5 @@
 package ch.uhc_yetis.view;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,7 +8,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 public class ScoreboardControllerController extends Stage {
 	private ScoreboardController controller;
@@ -25,21 +23,16 @@ public class ScoreboardControllerController extends Stage {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		setOnShowing(new EventHandler<WindowEvent>() {
-
-			@Override
-			public void handle(WindowEvent event) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setHeaderText("Neues Spiel starten?");
-				ButtonType type = alert.showAndWait().get();
-				if (type == ButtonType.OK) {
-					controller.startNewGame();
-				} else {
-					close();
-				}
+		setOnShowing(event -> {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setHeaderText("Neues Spiel starten?");
+			ButtonType type = alert.showAndWait().get();
+			if (type == ButtonType.OK) {
+				controller.startNewGame();
+			} else {
+				close();
 			}
 		});
-
 	}
 
 	@FXML

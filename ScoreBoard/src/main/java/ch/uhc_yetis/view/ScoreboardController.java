@@ -37,6 +37,7 @@ public class ScoreboardController extends Stage {
 	private TimeState timeState = TimeState.FISRHALF;
 	private boolean gameIsStarted = false;
 	private boolean timeStarted;
+	private VBox root;
 
 	public ScoreboardController() {
 		super(StageStyle.UNDECORATED);
@@ -44,11 +45,10 @@ public class ScoreboardController extends Stage {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("Scoreboard.fxml"));
 			loader.setController(this);
-			VBox box = (VBox) loader.load();
-			setScene(new Scene(box));
+			root = (VBox) loader.load();
+			setScene(new Scene(root));
 		} catch (Exception e) {
 		}
-
 		scoreHome.setText("");
 		scoreGuest.setText("");
 		thirdCount.setText("");
@@ -153,6 +153,10 @@ public class ScoreboardController extends Stage {
 		} catch (NullPointerException e) {
 			// stop pressed without ever started
 		}
+	}
+
+	public VBox getRoot() {
+		return root;
 	}
 
 	private void checkIfGameIsStarted() throws GameNotStartedException {
