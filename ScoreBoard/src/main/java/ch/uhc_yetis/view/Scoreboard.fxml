@@ -41,7 +41,7 @@
                                     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="508.0" prefWidth="1.0" styleClass="Score" text="H" />
+                                    <Label fx:id="scoreHomeLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="508.0" prefWidth="1.0" styleClass="Score" text="H" />
                                     <Label fx:id="scoreHome" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="Score" GridPane.columnIndex="1" />
                                  </children>
                               </GridPane>
@@ -64,7 +64,7 @@
                                  </rowConstraints>
                                  <children>
                                     <Label fx:id="scoreGuest" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="Score" />
-                                    <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="Score" text="G" GridPane.columnIndex="1" />
+                                    <Label fx:id="scoreGuestLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="Score" text="G" GridPane.columnIndex="1" />
                                  </children>
                               </GridPane>
                            </children>

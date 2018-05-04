@@ -1,24 +1,12 @@
+
 package ch.uhc_yetis.view.style;
 
-import java.util.ArrayList;
-import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
 
 public class StyleProvider {
-	private List<CssClass> cssClasses = new ArrayList<>();
-
-	public void addClass(CssClass cssClass) {
-		cssClasses.removeIf(x -> x.getClassName().equals(cssClass.getClassName()));
-		this.cssClasses.add(cssClass);
-	}
-
-	public List<CssClass> getCssClasses() {
-		return cssClasses;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		cssClasses.forEach(sb::append);
-		return sb.toString();
-	}
+  public static final SimpleStringProperty PRIMARY_COLOR = new SimpleStringProperty("#c62828");
+  public static final SimpleStringProperty BACKGROUND_COLOR = new SimpleStringProperty("#212121");
+  public static final SimpleStringProperty TIME_SIZE = new SimpleStringProperty("200");
+  public static final SimpleStringProperty SCORE_SIZE = new SimpleStringProperty("200");
+  public static final SimpleStringProperty THIRD_SIZE = new SimpleStringProperty();
 }
