@@ -13,39 +13,39 @@ import javafx.stage.Stage;
 
 public class Scoreboard extends Application {
 
-  public static void main(String[] args) {
-    launch(args);
-  }
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-  @Override
-  public void start(Stage primaryStage) throws Exception {
-    Font.loadFont(getClass().getResourceAsStream("view/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 250);
-    Font.loadFont(getClass().getResourceAsStream("view/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 150);
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Font.loadFont(getClass().getResourceAsStream("view/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 250);
+		Font.loadFont(getClass().getResourceAsStream("view/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 150);
 
-    ScoreboardController sc = new ScoreboardController();
-    ScoreboardControllerController scc = new ScoreboardControllerController(sc);
-    sc.setOnCloseRequest(event -> scc.close());
-    scc.setOnCloseRequest(event -> sc.close());
-    SettingsController settingsController = new SettingsController();
-    scc.getScene().setOnKeyPressed(event -> {
-      if (!settingsController.isShowing() && event.getCode().equals(KeyCode.F11)) {
-        settingsController.show();
-      }
-    });
-    sc.show();
-    scc.show();
-    Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-    scc.setX(visualBounds.getMinX());
-    scc.setY(visualBounds.getMinY());
+		ScoreboardController sc = new ScoreboardController();
+		ScoreboardControllerController scc = new ScoreboardControllerController(sc);
+		sc.setOnCloseRequest(event -> scc.close());
+		scc.setOnCloseRequest(event -> sc.close());
+		SettingsController settingsController = new SettingsController();
+		scc.getScene().setOnKeyPressed(event -> {
+			if (!settingsController.isShowing() && event.getCode().equals(KeyCode.F11)) {
+				settingsController.show();
+			}
+		});
+		sc.show();
+		scc.show();
+		Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+		scc.setX(visualBounds.getMinX());
+		scc.setY(visualBounds.getMinY());
 
-    for (Screen screen : Screen.getScreens()) {
-      if (!screen.equals(Screen.getPrimary())) {
-        sc.setX(screen.getVisualBounds().getMinX());
-        sc.setY(screen.getVisualBounds().getMinY());
-      }
-    }
+		for (Screen screen : Screen.getScreens()) {
+			if (screen.equals(Screen.getPrimary())) {
+				sc.setX(screen.getVisualBounds().getMinX());
+				sc.setY(screen.getVisualBounds().getMinY());
+			}
+		}
 
-    sc.setMaximized(true);
-    scc.setMaximized(true);
-  }
+		sc.setMaximized(true);
+		scc.setMaximized(true);
+	}
 }
