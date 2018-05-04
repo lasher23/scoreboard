@@ -3,7 +3,7 @@ package ch.uhc_yetis;
 
 import ch.uhc_yetis.view.ScoreboardController;
 import ch.uhc_yetis.view.ScoreboardControllerController;
-import ch.uhc_yetis.view.style.StyleController;
+import ch.uhc_yetis.view.settings.SettingsController;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.input.KeyCode;
@@ -26,10 +26,10 @@ public class Scoreboard extends Application {
     ScoreboardControllerController scc = new ScoreboardControllerController(sc);
     sc.setOnCloseRequest(event -> scc.close());
     scc.setOnCloseRequest(event -> sc.close());
-    StyleController styleController = new StyleController(sc.getRoot());
+    SettingsController settingsController = new SettingsController();
     scc.getScene().setOnKeyPressed(event -> {
-      if (!styleController.isShowing() && event.getCode().equals(KeyCode.F11)) {
-        styleController.show();
+      if (!settingsController.isShowing() && event.getCode().equals(KeyCode.F11)) {
+        settingsController.show();
       }
     });
     sc.show();

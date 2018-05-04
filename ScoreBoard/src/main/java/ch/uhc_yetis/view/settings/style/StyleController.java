@@ -1,16 +1,14 @@
 
-package ch.uhc_yetis.view.style;
+package ch.uhc_yetis.view.settings.style;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
-public class StyleController extends Stage {
+public class StyleController extends VBox {
   private static final String SIZE_THIRD = "300";
   private static final String SIZE_TIME = "200";
   private static final String SIZE_SCORE = "200";
@@ -27,13 +25,14 @@ public class StyleController extends Stage {
   @FXML
   private TextField sizeTime;
 
-  public StyleController(VBox root) {
+  public StyleController() {
     try {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("Style.fxml"));
+      loader.setRoot(this);
       loader.setController(this);
-      VBox box = (VBox)loader.load();
-      setScene(new Scene(box));
+      loader.load();
+
     } catch (Exception e) {
       e.printStackTrace();
     }

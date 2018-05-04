@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import ch.uhc_yetis.view.style.StyleProvider;
+import ch.uhc_yetis.view.settings.game.GameSettingsProvider;
+import ch.uhc_yetis.view.settings.style.StyleProvider;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
@@ -26,7 +27,7 @@ public class ScoreboardController extends Stage {
   private static final String FX_FONT_SIZE = "-fx-font-size: ";
 
   public enum TimeState {
-    PAUSE, FISRHALF, SECONDHALF
+    PAUSE, IN_HALF
   }
 
   @FXML
@@ -45,7 +46,7 @@ public class ScoreboardController extends Stage {
   private long actualTime = 0;
   private Timer timer;
   private boolean timerCountUp = true;
-  private TimeState timeState = TimeState.FISRHALF;
+  private TimeState timeState = TimeState.IN_HALF;
   private boolean gameIsStarted = false;
   private boolean timeStarted;
   private VBox root;
@@ -148,6 +149,8 @@ public class ScoreboardController extends Stage {
     thirdCount.setText(String.valueOf(Integer.parseInt(thirdCount.getText()) - 1));
   }
 
+  private long currenttime;
+
   public void startTime() throws GameNotStartedException {
     checkIfGameIsStarted();
     timer = new Timer();
@@ -155,20 +158,21 @@ public class ScoreboardController extends Stage {
 
       @Override
       public void run() {
-        if (actualTime == 1200000 && timeState == TimeState.FISRHALF) {
-          actualTime = 300000;
+        // next 3 lines for time debuging
+        if (actualTime == 0) {
+          currenttime = System.currentTimeMillis();
+        }
+        System.out.println(actualTime + ";" + (System.currentTimeMillis() - currenttime));
+        if (actualTime == GameSettingsProvider.THIRD_DURATION.get() && timeState == TimeState.IN_HALF) {
+          actualTime = GameSettingsProvider.PAUSE_DURATION.get();
           timerCountUp = false;
           timeState = TimeState.PAUSE;
           stopTime();
           return;
         } else if (actualTime == 0 && timeState == TimeState.PAUSE) {
-          actualTime = 1200000;
-          timeState = TimeState.SECONDHALF;
+          actualTime = GameSettingsProvider.THIRD_DURATION.get();
+          timeState = TimeState.IN_HALF;
           stopTime();
-          return;
-        } else if (actualTime == 0 && timeState == TimeState.SECONDHALF) {
-          stopTime();
-          fireGameEndListeners();
           return;
         }
 

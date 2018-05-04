@@ -1,5 +1,5 @@
 
-package ch.uhc_yetis.view.style;
+package ch.uhc_yetis.view.settings.style;
 
 import javafx.beans.property.SimpleStringProperty;
 
