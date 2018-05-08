@@ -24,16 +24,7 @@ public class ScoreboardControllerController extends Stage {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		setOnShowing(event -> {
-			Alert alert = new Alert(AlertType.CONFIRMATION);
-			alert.setHeaderText("Neues Spiel starten?");
-			ButtonType type = alert.showAndWait().get();
-			if (type == ButtonType.OK) {
-				controller.startNewGame();
-			} else {
-				close();
-			}
-		});
+		controller.startNewGame();
 	}
 
 	@FXML
