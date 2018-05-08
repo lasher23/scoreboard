@@ -5,13 +5,17 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
-        <tabs>
-          <Tab fx:id="styleTab" text="Style" />
-          <Tab fx:id="gameTab" text="Game" />
-        </tabs>
-      </TabPane>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+	minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+	xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<TabPane prefHeight="200.0" prefWidth="200.0"
+			tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+			<tabs>
+				<Tab fx:id="styleTab" text="Style" />
+				<Tab fx:id="gameTab" text="Game" />
+				<Tab fx:id="screenTab" text="Screen" />
+			</tabs>
+		</TabPane>
+	</children>
 </VBox>

@@ -6,7 +6,9 @@
 
 package ch.uhc_yetis.view.settings;
 
+import ch.uhc_yetis.view.ScoreboardController;
 import ch.uhc_yetis.view.settings.game.GameController;
+import ch.uhc_yetis.view.settings.screen.ScreenController;
 import ch.uhc_yetis.view.settings.style.StyleController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +26,10 @@ public class SettingsController extends Stage {
   private Tab styleTab;
   @FXML
   private Tab gameTab;
+  @FXML
+  private Tab screenTab;
 
-  public SettingsController() {
+  public SettingsController(ScoreboardController scoreboard) {
     try {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("Settings.fxml"));
@@ -33,8 +37,10 @@ public class SettingsController extends Stage {
       VBox box = loader.load();
       setScene(new Scene(box));
     } catch (Exception e) {
+    	throw new RuntimeException(e);
     }
     styleTab.setContent(new StyleController());
     gameTab.setContent(new GameController());
+    screenTab.setContent(new ScreenController(scoreboard));
   }
 }

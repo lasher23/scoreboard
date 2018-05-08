@@ -26,7 +26,7 @@ public class Scoreboard extends Application {
 		ScoreboardControllerController scc = new ScoreboardControllerController(sc);
 		sc.setOnCloseRequest(event -> scc.close());
 		scc.setOnCloseRequest(event -> sc.close());
-		SettingsController settingsController = new SettingsController();
+		SettingsController settingsController = new SettingsController(sc);
 		scc.getScene().setOnKeyPressed(event -> {
 			if (!settingsController.isShowing() && event.getCode().equals(KeyCode.F11)) {
 				settingsController.show();
@@ -37,13 +37,6 @@ public class Scoreboard extends Application {
 		Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 		scc.setX(visualBounds.getMinX());
 		scc.setY(visualBounds.getMinY());
-
-		for (Screen screen : Screen.getScreens()) {
-			if (screen.equals(Screen.getPrimary())) {
-				sc.setX(screen.getVisualBounds().getMinX());
-				sc.setY(screen.getVisualBounds().getMinY());
-			}
-		}
 
 		sc.setMaximized(true);
 		scc.setMaximized(true);
