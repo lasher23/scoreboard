@@ -19,8 +19,8 @@ public class Scoreboard extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Font.loadFont(getClass().getResourceAsStream("view/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 250);
-		Font.loadFont(getClass().getResourceAsStream("view/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 150);
+		Font.loadFont(getClass().getClassLoader().getResourceAsStream("ressources/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 250);
+		Font.loadFont(getClass().getClassLoader().getResourceAsStream("ressources/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 150);
 
 		ScoreboardController sc = new ScoreboardController();
 		ScoreboardControllerController scc = new ScoreboardControllerController(sc);
