@@ -7,9 +7,9 @@
 package ch.uhc_yetis.view.settings;
 
 import ch.uhc_yetis.view.ScoreboardController;
-import ch.uhc_yetis.view.settings.game.GameController;
-import ch.uhc_yetis.view.settings.screen.ScreenController;
-import ch.uhc_yetis.view.settings.style.StyleController;
+import ch.uhc_yetis.view.settings.scoreboard.game.GameController;
+import ch.uhc_yetis.view.settings.scoreboard.screen.ScreenController;
+import ch.uhc_yetis.view.settings.scoreboard.style.StyleController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

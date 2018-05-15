@@ -12,9 +12,9 @@
 		<TabPane prefHeight="200.0" prefWidth="200.0"
 			tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
 			<tabs>
-				<Tab fx:id="styleTab" text="Style" />
+				<Tab fx:id="styleTab" text="Scoreboard Style" />
 				<Tab fx:id="gameTab" text="Game" />
-				<Tab fx:id="screenTab" text="Screen" />
+				<Tab fx:id="screenTab" text="Scoreboard Screen" />
 			</tabs>
 		</TabPane>
 	</children>

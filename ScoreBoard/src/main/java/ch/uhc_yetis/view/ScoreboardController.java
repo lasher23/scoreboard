@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import ch.uhc_yetis.view.settings.game.GameSettingsProvider;
-import ch.uhc_yetis.view.settings.style.StyleProvider;
+import ch.uhc_yetis.view.settings.scoreboard.game.GameSettingsProvider;
+import ch.uhc_yetis.view.settings.scoreboard.style.StyleProvider;
 import javafx.application.Platform;
 import javafx.beans.property.Property;
 import javafx.beans.property.StringProperty;

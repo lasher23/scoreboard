@@ -1,4 +1,4 @@
-package ch.uhc_yetis.view.settings.screen;
+package ch.uhc_yetis.view.settings.scoreboard.screen;
 
 import ch.uhc_yetis.view.ScoreboardController;
 import javafx.beans.value.ChangeListener;
