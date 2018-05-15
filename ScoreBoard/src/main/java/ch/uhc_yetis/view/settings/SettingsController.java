@@ -7,6 +7,7 @@
 package ch.uhc_yetis.view.settings;
 
 import ch.uhc_yetis.view.ScoreboardController;
+import ch.uhc_yetis.view.settings.controller.style.ControllerStyleView;
 import ch.uhc_yetis.view.settings.scoreboard.game.GameController;
 import ch.uhc_yetis.view.settings.scoreboard.screen.ScreenController;
 import ch.uhc_yetis.view.settings.scoreboard.style.StyleController;
@@ -22,14 +23,16 @@ import javafx.stage.Stage;
  * @author nicolas.schmid
  */
 public class SettingsController extends Stage {
-  @FXML
-  private Tab styleTab;
-  @FXML
-  private Tab gameTab;
-  @FXML
-  private Tab screenTab;
+	@FXML
+	private Tab styleTab;
+	@FXML
+	private Tab gameTab;
+	@FXML
+	private Tab screenTab;
+	@FXML
+	private Tab controllerStyleTab;
 
-  public SettingsController(ScoreboardController scoreboard) {
+	public SettingsController(ScoreboardController scoreboard) {
     try {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("Settings.fxml"));
@@ -42,5 +45,6 @@ public class SettingsController extends Stage {
     styleTab.setContent(new StyleController());
     gameTab.setContent(new GameController());
     screenTab.setContent(new ScreenController(scoreboard));
+    controllerStyleTab.setContent(new ControllerStyleView().getView());
   }
 }

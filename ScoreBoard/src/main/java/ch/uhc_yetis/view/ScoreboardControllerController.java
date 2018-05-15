@@ -1,6 +1,7 @@
 
 package ch.uhc_yetis.view;
 
+import ch.uhc_yetis.view.settings.controller.style.ControllerStyleProvider;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,7 +22,9 @@ public class ScoreboardControllerController extends Stage {
 	private Label guestCount;
 	@FXML
 	private Label time;
-	
+	@FXML
+	private VBox root;
+
 	public ScoreboardControllerController(ScoreboardController controller) {
 		this.controller = controller;
 		try {
@@ -38,6 +41,7 @@ public class ScoreboardControllerController extends Stage {
 		homeCount.textProperty().bind(controller.getHomeCount());
 		guestCount.textProperty().bind(controller.getGuestCount());
 		time.textProperty().bind(controller.getTime());
+		ControllerStyleProvider.getInstance().addSizeChangeListener(x -> root.setStyle("-fx-font-size:" + x + ";"));
 	}
 
 	@FXML
@@ -105,6 +109,5 @@ public class ScoreboardControllerController extends Stage {
 	private void onNewGame() {
 		controller.startNewGame();
 	}
-	
-	
+
 }
