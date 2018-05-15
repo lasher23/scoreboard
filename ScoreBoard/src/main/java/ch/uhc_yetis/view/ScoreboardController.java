@@ -10,7 +10,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import ch.uhc_yetis.view.settings.scoreboard.game.GameSettingsProvider;
-import ch.uhc_yetis.view.settings.scoreboard.style.StyleProvider;
+import ch.uhc_yetis.view.settings.scoreboard.style.ScoreboardStyleProvider;
 import javafx.application.Platform;
 import javafx.beans.property.Property;
 import javafx.beans.property.StringProperty;
@@ -72,19 +72,19 @@ public class ScoreboardController extends Stage {
 	}
 
 	private void setStyleListeners() {
-		StyleProvider.BACKGROUND_COLOR
+		ScoreboardStyleProvider.BACKGROUND_COLOR
 				.addListener((ChangeListener<String>) (observable, oldValue, newValue) -> setRootStyle(newValue));
-		StyleProvider.PRIMARY_COLOR.addListener((ChangeListener<String>) (observable, oldValue, newValue) -> {
-			setTimerStyle(newValue, StyleProvider.TIME_SIZE.getValue());
-			setThirdCountStyle(newValue, StyleProvider.THIRD_SIZE.getValue());
-			setScoreStyle(newValue, StyleProvider.SCORE_SIZE.getValue());
+		ScoreboardStyleProvider.PRIMARY_COLOR.addListener((ChangeListener<String>) (observable, oldValue, newValue) -> {
+			setTimerStyle(newValue, ScoreboardStyleProvider.TIME_SIZE.getValue());
+			setThirdCountStyle(newValue, ScoreboardStyleProvider.THIRD_SIZE.getValue());
+			setScoreStyle(newValue, ScoreboardStyleProvider.SCORE_SIZE.getValue());
 		});
-		StyleProvider.SCORE_SIZE.addListener((ChangeListener<String>) (observable, oldValue,
-				newValue) -> setScoreStyle(StyleProvider.PRIMARY_COLOR.getValue(), newValue));
-		StyleProvider.THIRD_SIZE.addListener((ChangeListener<String>) (observable, oldValue,
-				newValue) -> setThirdCountStyle(StyleProvider.PRIMARY_COLOR.getValue(), newValue));
-		StyleProvider.TIME_SIZE.addListener((ChangeListener<String>) (observable, oldValue,
-				newValue) -> setTimerStyle(StyleProvider.PRIMARY_COLOR.getValue(), newValue));
+		ScoreboardStyleProvider.SCORE_SIZE.addListener((ChangeListener<String>) (observable, oldValue,
+				newValue) -> setScoreStyle(ScoreboardStyleProvider.PRIMARY_COLOR.getValue(), newValue));
+		ScoreboardStyleProvider.THIRD_SIZE.addListener((ChangeListener<String>) (observable, oldValue,
+				newValue) -> setThirdCountStyle(ScoreboardStyleProvider.PRIMARY_COLOR.getValue(), newValue));
+		ScoreboardStyleProvider.TIME_SIZE.addListener((ChangeListener<String>) (observable, oldValue,
+				newValue) -> setTimerStyle(ScoreboardStyleProvider.PRIMARY_COLOR.getValue(), newValue));
 	}
 
 	private void setRootStyle(String background) {

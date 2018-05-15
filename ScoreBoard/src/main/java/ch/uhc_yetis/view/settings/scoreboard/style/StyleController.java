@@ -45,11 +45,11 @@ public class StyleController extends VBox {
   }
 
   private void addListeners() {
-    colorBackground.valueProperty().addListener(x -> StyleProvider.BACKGROUND_COLOR.setValue(toRGBCode(colorBackground.getValue())));
-    colorText.valueProperty().addListener(x -> StyleProvider.PRIMARY_COLOR.setValue(toRGBCode(colorText.getValue())));
-    sizeScore.textProperty().addListener(x -> StyleProvider.SCORE_SIZE.setValue(sizeScore.getText() + "px"));
-    sizeTime.textProperty().addListener(x -> StyleProvider.TIME_SIZE.setValue(sizeTime.getText() + "px"));
-    sizeThird.textProperty().addListener(x -> StyleProvider.THIRD_SIZE.setValue(sizeThird.getText() + "px"));
+    colorBackground.valueProperty().addListener(x -> ScoreboardStyleProvider.BACKGROUND_COLOR.setValue(toRGBCode(colorBackground.getValue())));
+    colorText.valueProperty().addListener(x -> ScoreboardStyleProvider.PRIMARY_COLOR.setValue(toRGBCode(colorText.getValue())));
+    sizeScore.textProperty().addListener(x -> ScoreboardStyleProvider.SCORE_SIZE.setValue(sizeScore.getText() + "px"));
+    sizeTime.textProperty().addListener(x -> ScoreboardStyleProvider.TIME_SIZE.setValue(sizeTime.getText() + "px"));
+    sizeThird.textProperty().addListener(x -> ScoreboardStyleProvider.THIRD_SIZE.setValue(sizeThird.getText() + "px"));
   }
 
   public static String toRGBCode(Color color) {
@@ -62,10 +62,10 @@ public class StyleController extends VBox {
     sizeThird.setText(SIZE_THIRD);
     sizeScore.setText(SIZE_SCORE);
     sizeTime.setText(SIZE_TIME);
-    StyleProvider.BACKGROUND_COLOR.setValue(toRGBCode(BACKGROUND_COLOR));
-    StyleProvider.PRIMARY_COLOR.setValue(toRGBCode(TEXT_COLOR));
-    StyleProvider.SCORE_SIZE.setValue(SIZE_SCORE);
-    StyleProvider.THIRD_SIZE.setValue(SIZE_THIRD);
-    StyleProvider.TIME_SIZE.setValue(SIZE_TIME);
+    ScoreboardStyleProvider.BACKGROUND_COLOR.setValue(toRGBCode(BACKGROUND_COLOR));
+    ScoreboardStyleProvider.PRIMARY_COLOR.setValue(toRGBCode(TEXT_COLOR));
+    ScoreboardStyleProvider.SCORE_SIZE.setValue(SIZE_SCORE);
+    ScoreboardStyleProvider.THIRD_SIZE.setValue(SIZE_THIRD);
+    ScoreboardStyleProvider.TIME_SIZE.setValue(SIZE_TIME);
   }
 }
