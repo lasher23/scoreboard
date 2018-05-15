@@ -7,12 +7,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ScoreboardControllerController extends Stage {
 	private ScoreboardController controller;
-
+	@FXML
+	private Label thirdCount;
+	@FXML
+	private Label homeCount;
+	@FXML
+	private Label guestCount;
+	@FXML
+	private Label time;
+	
 	public ScoreboardControllerController(ScoreboardController controller) {
 		this.controller = controller;
 		try {
@@ -25,6 +34,10 @@ public class ScoreboardControllerController extends Stage {
 			e.printStackTrace();
 		}
 		controller.startNewGame();
+		thirdCount.textProperty().bind(controller.getThirdCount());
+		homeCount.textProperty().bind(controller.getHomeCount());
+		guestCount.textProperty().bind(controller.getGuestCount());
+		time.textProperty().bind(controller.getTime());
 	}
 
 	@FXML
@@ -92,4 +105,6 @@ public class ScoreboardControllerController extends Stage {
 	private void onNewGame() {
 		controller.startNewGame();
 	}
+	
+	
 }

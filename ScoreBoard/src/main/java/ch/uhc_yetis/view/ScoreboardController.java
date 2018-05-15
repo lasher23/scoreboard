@@ -12,7 +12,10 @@ import java.util.TimerTask;
 import ch.uhc_yetis.view.settings.game.GameSettingsProvider;
 import ch.uhc_yetis.view.settings.style.StyleProvider;
 import javafx.application.Platform;
+import javafx.beans.property.Property;
+import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -206,7 +209,23 @@ public class ScoreboardController extends Stage {
 	public VBox getRoot() {
 		return root;
 	}
-
+	
+	public ObservableValue<String> getThirdCount() {
+		return thirdCount.textProperty();
+	}
+	
+	public ObservableValue<String> getHomeCount() {
+		return scoreHome.textProperty();
+	}
+	
+	public ObservableValue<String> getGuestCount() {
+		return scoreGuest.textProperty();
+	}
+	
+	public ObservableValue<String> getTime() {
+		return time.textProperty();
+	}
+	
 	private void checkIfGameIsStarted() throws GameNotStartedException {
 		if (!gameIsStarted) {
 			throw new GameNotStartedException("Start a game first");
