@@ -5,10 +5,9 @@ import ch.uhc_yetis.view.settings.controller.style.ControllerStyleProvider;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -48,6 +47,7 @@ public class ScoreboardControllerController extends Stage {
 	private void onNextThird() {
 		try {
 			controller.addThird();
+			thirdCount.requestFocus();
 		} catch (GameNotStartedException e) {
 		}
 	}
@@ -56,6 +56,7 @@ public class ScoreboardControllerController extends Stage {
 	private void onPreviousThird() {
 		try {
 			controller.undoThird();
+			thirdCount.requestFocus();
 		} catch (GameNotStartedException e) {
 		}
 	}
@@ -64,6 +65,7 @@ public class ScoreboardControllerController extends Stage {
 	private void onGoalHomePlus() {
 		try {
 			controller.addScoreHome();
+			thirdCount.requestFocus();
 		} catch (GameNotStartedException e) {
 		}
 	}
@@ -72,6 +74,7 @@ public class ScoreboardControllerController extends Stage {
 	private void onGoalHomeMinus() {
 		try {
 			controller.undoScoreHome();
+			thirdCount.requestFocus();
 		} catch (GameNotStartedException e) {
 		}
 	}
@@ -80,6 +83,7 @@ public class ScoreboardControllerController extends Stage {
 	private void onGoalGuestPlus() {
 		try {
 			controller.addScoreGuest();
+			thirdCount.requestFocus();
 		} catch (GameNotStartedException e) {
 		}
 	}
@@ -88,26 +92,27 @@ public class ScoreboardControllerController extends Stage {
 	private void onGoalGuestMinus() {
 		try {
 			controller.undoScoreGuest();
+			thirdCount.requestFocus();
 		} catch (GameNotStartedException e) {
 		}
 	}
 
 	@FXML
-	private void onTimeStart() {
-		try {
-			controller.startTime();
-		} catch (GameNotStartedException e) {
-		}
-	}
-
-	@FXML
-	private void onTimeStop() {
-		controller.stopTime();
+	private void onTimeStateChange() {
+		controller.changeTimeState();
+		thirdCount.requestFocus();
 	}
 
 	@FXML
 	private void onNewGame() {
 		controller.startNewGame();
+		thirdCount.requestFocus();
 	}
 
+	@FXML
+	private void onKeyPressed(KeyEvent event) {
+		if (event.getCode().equals(KeyCode.SPACE)) {
+			controller.changeTimeState();
+		}
+	}
 }

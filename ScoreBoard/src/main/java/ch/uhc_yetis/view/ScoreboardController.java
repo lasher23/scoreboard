@@ -12,8 +12,6 @@ import java.util.TimerTask;
 import ch.uhc_yetis.view.settings.scoreboard.game.GameSettingsProvider;
 import ch.uhc_yetis.view.settings.scoreboard.style.ScoreboardStyleProvider;
 import javafx.application.Platform;
-import javafx.beans.property.Property;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -85,6 +83,8 @@ public class ScoreboardController extends Stage {
 				newValue) -> setThirdCountStyle(ScoreboardStyleProvider.PRIMARY_COLOR.getValue(), newValue));
 		ScoreboardStyleProvider.TIME_SIZE.addListener((ChangeListener<String>) (observable, oldValue,
 				newValue) -> setTimerStyle(ScoreboardStyleProvider.PRIMARY_COLOR.getValue(), newValue));
+		ScoreboardStyleProvider.SCORE_GUEST_HOME_SIZE.addListener((ChangeListener<String>) (observable, oldValue,
+				newValue) -> setScoreHomeGuestStyle(ScoreboardStyleProvider.PRIMARY_COLOR.getValue(), newValue));
 	}
 
 	private void setRootStyle(String background) {
@@ -103,6 +103,10 @@ public class ScoreboardController extends Stage {
 		String style = FX_FONT_SIZE + fontSize + FX_TEXT_FILL + fontColor + FX_FONT_FAMILY_DSEG14_MODERN_REGULAR;
 		scoreHome.setStyle(style);
 		scoreGuest.setStyle(style);
+	}
+
+	private void setScoreHomeGuestStyle(String fontColor, String fontSize) {
+		String style = FX_FONT_SIZE + fontSize + FX_TEXT_FILL + fontColor + FX_FONT_FAMILY_DSEG14_MODERN_REGULAR;
 		scoreHomeLabel.setStyle(style);
 		scoreGuestLabel.setStyle(style);
 	}
@@ -197,6 +201,22 @@ public class ScoreboardController extends Stage {
 		}
 	}
 
+	public void changeTimeState() {
+		if (timeStarted) {
+			try {
+				timeStarted = false;
+				timer.cancel();
+			} catch (NullPointerException e) {
+				// stop pressed without ever started
+			}
+		} else {
+			try {
+				startTime();
+			} catch (GameNotStartedException e) {
+			}
+		}
+	}
+
 	public void stopTime() {
 		try {
 			timeStarted = false;
@@ -209,23 +229,23 @@ public class ScoreboardController extends Stage {
 	public VBox getRoot() {
 		return root;
 	}
-	
+
 	public ObservableValue<String> getThirdCount() {
 		return thirdCount.textProperty();
 	}
-	
+
 	public ObservableValue<String> getHomeCount() {
 		return scoreHome.textProperty();
 	}
-	
+
 	public ObservableValue<String> getGuestCount() {
 		return scoreGuest.textProperty();
 	}
-	
+
 	public ObservableValue<String> getTime() {
 		return time.textProperty();
 	}
-	
+
 	private void checkIfGameIsStarted() throws GameNotStartedException {
 		if (!gameIsStarted) {
 			throw new GameNotStartedException("Start a game first");
