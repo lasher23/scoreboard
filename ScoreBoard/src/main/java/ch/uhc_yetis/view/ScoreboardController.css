@@ -1,0 +1,8 @@
+.plus{
+	-fx-background-image: url("/ressources/plus.png");
+	-fx-background-size: cover;
+}
+.minus{
+	-fx-background-image: url("/ressources/minus.png");
+	-fx-background-size: 0%, 100%;
+}
