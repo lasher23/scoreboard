@@ -15,7 +15,7 @@
 				<Tab fx:id="styleTab" text="Scoreboard Style" />
 				<Tab fx:id="gameTab" text="Game" />
 				<Tab fx:id="screenTab" text="Scoreboard Screen" />
-				<Tab fx:id="controllerStyleTab" text="Style"></Tab>
+				<Tab fx:id="controllerStyleTab"></Tab>
 			</tabs>
 		</TabPane>
 	</children>
