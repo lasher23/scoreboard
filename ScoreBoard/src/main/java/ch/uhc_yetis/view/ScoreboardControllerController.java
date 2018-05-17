@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ScoreboardControllerController extends Stage {
-  private static final int SECOND_IN_MILISECOND = 1000;
+  private static final long SECOND_IN_MILISECOND = 1000;
   private ScoreboardController controller;
   @FXML
   private Label thirdCount;
@@ -119,21 +119,21 @@ public class ScoreboardControllerController extends Stage {
 
   @FXML
   private void plusOneSecond() {
-    controller.addTimeToTimer(1 * SECOND_IN_MILISECOND);
+    controller.addTimeToTimer(1L * SECOND_IN_MILISECOND);
   }
 
   @FXML
   private void minusOneSecond() {
-    controller.addTimeToTimer(-1 * SECOND_IN_MILISECOND);
+    controller.addTimeToTimer(-1L * SECOND_IN_MILISECOND);
   }
 
   @FXML
   private void plusTenSeconds() {
-    controller.addTimeToTimer(10 * SECOND_IN_MILISECOND);
+    controller.addTimeToTimer(10L * SECOND_IN_MILISECOND);
   }
 
   @FXML
   private void minusTenSeconds() {
-    controller.addTimeToTimer(-10 * SECOND_IN_MILISECOND);
+    controller.addTimeToTimer(-10L * SECOND_IN_MILISECOND);
   }
 }
