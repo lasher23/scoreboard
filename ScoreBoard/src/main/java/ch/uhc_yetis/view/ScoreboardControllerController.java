@@ -12,107 +12,128 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ScoreboardControllerController extends Stage {
-	private ScoreboardController controller;
-	@FXML
-	private Label thirdCount;
-	@FXML
-	private Label homeCount;
-	@FXML
-	private Label guestCount;
-	@FXML
-	private Label time;
-	@FXML
-	private VBox root;
+  private static final int SECOND_IN_MILISECOND = 1000;
+  private ScoreboardController controller;
+  @FXML
+  private Label thirdCount;
+  @FXML
+  private Label homeCount;
+  @FXML
+  private Label guestCount;
+  @FXML
+  private Label time;
+  @FXML
+  private VBox root;
 
-	public ScoreboardControllerController(ScoreboardController controller) {
-		this.controller = controller;
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("ScoreboardController.fxml"));
-			loader.setController(this);
-			VBox box = (VBox) loader.load();
-			setScene(new Scene(box));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		controller.startNewGame();
-		thirdCount.textProperty().bind(controller.getThirdCount());
-		homeCount.textProperty().bind(controller.getHomeCount());
-		guestCount.textProperty().bind(controller.getGuestCount());
-		time.textProperty().bind(controller.getTime());
-		ControllerStyleProvider.getInstance().addSizeChangeListener(x -> root.setStyle("-fx-font-size:" + x + ";"));
-	}
+  public ScoreboardControllerController(ScoreboardController controller) {
+    this.controller = controller;
+    try {
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("ScoreboardController.fxml"));
+      loader.setController(this);
+      VBox box = (VBox)loader.load();
+      setScene(new Scene(box));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    controller.startNewGame();
+    thirdCount.textProperty().bind(controller.getThirdCount());
+    homeCount.textProperty().bind(controller.getHomeCount());
+    guestCount.textProperty().bind(controller.getGuestCount());
+    time.textProperty().bind(controller.getTime());
+    ControllerStyleProvider.getInstance().addSizeChangeListener(x -> root.setStyle("-fx-font-size:" + x + ";"));
+  }
 
-	@FXML
-	private void onNextThird() {
-		try {
-			controller.addThird();
-			thirdCount.requestFocus();
-		} catch (GameNotStartedException e) {
-		}
-	}
+  @FXML
+  private void onNextThird() {
+    try {
+      controller.addThird();
+      thirdCount.requestFocus();
+    } catch (GameNotStartedException e) {
+    }
+  }
 
-	@FXML
-	private void onPreviousThird() {
-		try {
-			controller.undoThird();
-			thirdCount.requestFocus();
-		} catch (GameNotStartedException e) {
-		}
-	}
+  @FXML
+  private void onPreviousThird() {
+    try {
+      controller.undoThird();
+      thirdCount.requestFocus();
+    } catch (GameNotStartedException e) {
+    }
+  }
 
-	@FXML
-	private void onGoalHomePlus() {
-		try {
-			controller.addScoreHome();
-			thirdCount.requestFocus();
-		} catch (GameNotStartedException e) {
-		}
-	}
+  @FXML
+  private void onGoalHomePlus() {
+    try {
+      controller.addScoreHome();
+      thirdCount.requestFocus();
+    } catch (GameNotStartedException e) {
+    }
+  }
 
-	@FXML
-	private void onGoalHomeMinus() {
-		try {
-			controller.undoScoreHome();
-			thirdCount.requestFocus();
-		} catch (GameNotStartedException e) {
-		}
-	}
+  @FXML
+  private void onGoalHomeMinus() {
+    try {
+      controller.undoScoreHome();
+      thirdCount.requestFocus();
+    } catch (GameNotStartedException e) {
+    }
+  }
 
-	@FXML
-	private void onGoalGuestPlus() {
-		try {
-			controller.addScoreGuest();
-			thirdCount.requestFocus();
-		} catch (GameNotStartedException e) {
-		}
-	}
+  @FXML
+  private void onGoalGuestPlus() {
+    try {
+      controller.addScoreGuest();
+      thirdCount.requestFocus();
+    } catch (GameNotStartedException e) {
+    }
+  }
 
-	@FXML
-	private void onGoalGuestMinus() {
-		try {
-			controller.undoScoreGuest();
-			thirdCount.requestFocus();
-		} catch (GameNotStartedException e) {
-		}
-	}
+  @FXML
+  private void onGoalGuestMinus() {
+    try {
+      controller.undoScoreGuest();
+      thirdCount.requestFocus();
+    } catch (GameNotStartedException e) {
+    }
+  }
 
-	@FXML
-	private void onTimeStateChange() {
-		controller.changeTimeState();
-		thirdCount.requestFocus();
-	}
+  @FXML
+  private void onTimeStateChange() {
+    controller.changeTimeState();
+    thirdCount.requestFocus();
+  }
 
-	@FXML
-	private void onNewGame() {
-		controller.startNewGame();
-		thirdCount.requestFocus();
-	}
+  @FXML
+  private void onNewGame() {
+    controller.startNewGame();
+    thirdCount.requestFocus();
+  }
 
-	@FXML
-	private void onKeyPressed(KeyEvent event) {
-		if (event.getCode().equals(KeyCode.SPACE)) {
-			controller.changeTimeState();
-		}
-	}
+  @FXML
+  private void onKeyPressed(KeyEvent event) {
+    if (event.getCode().equals(KeyCode.SPACE)) {
+      controller.changeTimeState();
+    }
+  }
+
+  @FXML
+  private void plusOneSecond() {
+    controller.addTimeToTimer(1 * SECOND_IN_MILISECOND);
+  }
+
+  @FXML
+  private void minusOneSecond() {
+    controller.addTimeToTimer(-1 * SECOND_IN_MILISECOND);
+  }
+
+  @FXML
+  private void plusTenSeconds() {
+    controller.addTimeToTimer(10 * SECOND_IN_MILISECOND);
+  }
+
+  @FXML
+  private void minusTenSeconds() {
+    controller.addTimeToTimer(-10 * SECOND_IN_MILISECOND);
+  }
 }
