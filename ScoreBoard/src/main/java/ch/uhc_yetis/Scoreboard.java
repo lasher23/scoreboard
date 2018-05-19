@@ -19,13 +19,23 @@ public class Scoreboard extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Font.loadFont(getClass().getClassLoader().getResourceAsStream("ressources/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 250);
-		Font.loadFont(getClass().getClassLoader().getResourceAsStream("ressources/DSEG14-Modern/DSEG14Modern-Regular.ttf"), 150);
+		Font.loadFont(
+				getClass().getClassLoader().getResourceAsStream("ressources/DSEG14-Modern/DSEG14Modern-Regular.ttf"),
+				250);
+		Font.loadFont(
+				getClass().getClassLoader().getResourceAsStream("ressources/DSEG14-Modern/DSEG14Modern-Regular.ttf"),
+				150);
 
 		ScoreboardController sc = new ScoreboardController();
 		ScoreboardControllerController scc = new ScoreboardControllerController(sc);
-		sc.setOnCloseRequest(event -> scc.close());
-		scc.setOnCloseRequest(event -> sc.close());
+		sc.setOnCloseRequest(event -> {
+			sc.stopTime();
+			scc.close();
+		});
+		scc.setOnCloseRequest(event -> {
+			sc.stopTime();
+			sc.close();
+		});
 		SettingsController settingsController = new SettingsController(sc);
 		scc.getScene().setOnKeyPressed(event -> {
 			if (!settingsController.isShowing() && event.getCode().equals(KeyCode.F11)) {

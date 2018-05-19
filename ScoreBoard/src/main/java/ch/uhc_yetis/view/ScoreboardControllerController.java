@@ -125,6 +125,11 @@ public class ScoreboardControllerController extends Stage {
 	}
 
 	@FXML
+	private void onTimeReset() {
+		this.controller.resetTime();
+	}
+
+	@FXML
 	private void onKeyPressed(KeyEvent event) {
 		if (event.getCode().equals(KeyCode.SPACE)) {
 			controller.changeTimeState();
